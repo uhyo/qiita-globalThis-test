@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WindowProxyのテスト</title>
+  </head>
+  <body>
+    <p>↓このボタンを押すとfoo.htmlが開きます。</p>
+    <p><input type="button" onclick="openFoo()" value="foo.htmlを開く"></p>
+    <p>ウィンドウを開いた後に↓このボタンを押すと、開いたウィンドウ内のグローバル変数`foo`の値をalertで表示します。</p>
+    <p><input type="button" onclick="showFoo()" value="fooの値を表示"></p>
+
+    <script>
+      let fooWindow;
+      
+      function openFoo() {
+        fooWindow = window.open('/foo.html');
+      }
+      function showFoo() {
+        if (fooWindow) {
+          alert(fooWindow.foo);
+        }
+      }
+    </script>
+  </body>
+</html>
+
